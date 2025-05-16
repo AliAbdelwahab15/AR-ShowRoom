@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit.AR;
 
-public class ARPlacementToggle : MonoBehaviour
+public class CarPlacement : MonoBehaviour
 {
     [Header("Your Two Placement Interactables")]
     [SerializeField] private ARPlacementInteractable mclarenPlacement;
@@ -33,13 +33,13 @@ public class ARPlacementToggle : MonoBehaviour
     {
         mclarenPlacement.enabled = true;
         dodgePlacement.enabled = false;
-        Debug.Log("ARPlacementToggle: McLaren placer active");
+        //Debug.Log("ARPlacementToggle: McLaren placer active");
     }
 
     private void ActivateDodge()
     {
         mclarenPlacement.enabled = false;
         dodgePlacement.enabled = true;
-        Debug.Log("ARPlacementToggle: Dodge placer active");
+        //Debug.Log("ARPlacementToggle: Dodge placer active");
     }
 }

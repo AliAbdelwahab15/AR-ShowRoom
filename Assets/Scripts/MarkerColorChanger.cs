@@ -1,15 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.XR.Interaction.Toolkit.AR;
 
-public class CarColorChanger : MonoBehaviour
+public class MarkerColorChanger : MonoBehaviour
 {
     private enum Mode { Paint, Tyres }
-
-    [Header("AR Placement")]
-    [SerializeField] private ARPlacementInteractable mclarenPlacer;
-    [SerializeField] private ARPlacementInteractable dodgePlacer;
 
     [Header("Original Paint Materials")]
     [SerializeField] private Material mclarenOriginalPaint;
@@ -22,56 +17,54 @@ public class CarColorChanger : MonoBehaviour
     [Header("UI")]
     [SerializeField] private Button paintModeButton;
     [SerializeField] private Button tyreModeButton;
-    [SerializeField] private ColorWheel colorWheel; // your existing wheel
+    [SerializeField] private ColorWheel colorWheel;
 
-    // state
     private Mode currentMode = Mode.Paint;
     private GameObject currentCar;
-    private Material paintOriginal, tyreOriginal;
+    private Material paintOriginal;
+    private Material tyreOriginal;
     private Dictionary<Renderer, int[]> paintSlots = new Dictionary<Renderer, int[]>();
     private Dictionary<Renderer, int[]> tyreSlots = new Dictionary<Renderer, int[]>();
 
     private void OnEnable()
     {
-        mclarenPlacer.objectPlaced.AddListener(args => CacheNewCar(args.placementObject, true));
-        dodgePlacer.objectPlaced.AddListener(args => CacheNewCar(args.placementObject, false));
+        // Subscribe to marker-based spawns
+        MarkerSpawner.OnMarkerPlaced += OnMarkerPlaced;
 
+        // Mode buttons
         paintModeButton.onClick.AddListener(() => currentMode = Mode.Paint);
         tyreModeButton.onClick.AddListener(() => currentMode = Mode.Tyres);
 
+        // Color wheel
         colorWheel.onColorChanged.AddListener(ApplyColor);
     }
 
     private void OnDisable()
     {
-        mclarenPlacer.objectPlaced.RemoveAllListeners();
-        dodgePlacer.objectPlaced.RemoveAllListeners();
+        MarkerSpawner.OnMarkerPlaced -= OnMarkerPlaced;
 
         paintModeButton.onClick.RemoveAllListeners();
         tyreModeButton.onClick.RemoveAllListeners();
-
         colorWheel.onColorChanged.RemoveAllListeners();
     }
 
-    private void CacheNewCar(GameObject car, bool isMcLaren)
+    private void OnMarkerPlaced(GameObject car)
     {
         currentCar = car;
-
-        // pick originals
-        paintOriginal = isMcLaren ? mclarenOriginalPaint : dodgeOriginalPaint;
-        tyreOriginal = isMcLaren ? mclarenOriginalTyre : dodgeOriginalTyre;
-
         paintSlots.Clear();
         tyreSlots.Clear();
 
+        bool isMcLaren = car.name.Contains("McLaren");
+        paintOriginal = isMcLaren ? mclarenOriginalPaint : dodgeOriginalPaint;
+        tyreOriginal = isMcLaren ? mclarenOriginalTyre : dodgeOriginalTyre;
+
         if (paintOriginal != null)
             CacheSlots(car, paintOriginal, paintSlots);
-
         if (tyreOriginal != null)
             CacheSlots(car, tyreOriginal, tyreSlots);
     }
 
-    private void CacheSlots(GameObject car, Material original, Dictionary<Renderer, int[]> slotsDict)
+    private void CacheSlots(GameObject car, Material original, Dictionary<Renderer, int[]> dict)
     {
         foreach (var rend in car.GetComponentsInChildren<Renderer>())
         {
@@ -80,9 +73,8 @@ public class CarColorChanger : MonoBehaviour
             for (int i = 0; i < shared.Length; i++)
                 if (shared[i] == original)
                     list.Add(i);
-
             if (list.Count > 0)
-                slotsDict[rend] = list.ToArray();
+                dict[rend] = list.ToArray();
         }
     }
 
@@ -90,13 +82,11 @@ public class CarColorChanger : MonoBehaviour
     {
         if (currentCar == null) return;
 
-        var target = currentMode == Mode.Paint ? paintSlots : tyreSlots;
-
+        var target = (currentMode == Mode.Paint) ? paintSlots : tyreSlots;
         foreach (var kv in target)
         {
             var rend = kv.Key;
-            var mats = rend.materials; // get modifiable copy
-
+            var mats = rend.materials;
             foreach (int idx in kv.Value)
             {
                 if (mats[idx].HasProperty("_BaseColor"))
@@ -104,8 +94,7 @@ public class CarColorChanger : MonoBehaviour
                 else if (mats[idx].HasProperty("_Color"))
                     mats[idx].SetColor("_Color", c);
             }
-
-            rend.materials = mats; // write back
+            rend.materials = mats;
         }
     }
 }

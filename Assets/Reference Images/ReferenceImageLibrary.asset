@@ -21,19 +21,19 @@ MonoBehaviour:
       m_GuidLow: 4748101992773742897
       m_GuidHigh: 2406553079559185849
     m_SerializedTextureGuid:
-      m_GuidLow: 16457539484874630731
-      m_GuidHigh: 10848509560069996986
+      m_GuidLow: 6234183684742772453
+      m_GuidHigh: 5076416183133510761
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
     m_Name: McLaren
-    m_Texture: {fileID: 2800000, guid: 38eae64becf7e464bac1668ef7a58d96, type: 3}
+    m_Texture: {fileID: 2800000, guid: f9a0f6e545075684699cb75f9f0d7346, type: 3}
   - m_SerializedGuid:
       m_GuidLow: 5614715870032661773
       m_GuidHigh: 2720104732217262724
     m_SerializedTextureGuid:
-      m_GuidLow: 8409466982205076488
-      m_GuidHigh: 16247442728846698283
+      m_GuidLow: 10039919949530058664
+      m_GuidHigh: 10579424625840567338
     m_Size: {x: 0, y: 0}
     m_SpecifySize: 0
     m_Name: Dodge
-    m_Texture: {fileID: 2800000, guid: 40b5b4086daa74b42b27694914837ae1, type: 3}
+    m_Texture: {fileID: 2800000, guid: 1518cfa8f6008b542a343f1fa5aad192, type: 3}

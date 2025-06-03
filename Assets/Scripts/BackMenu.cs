@@ -4,12 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class BackMenu : MonoBehaviour
 {
-    [Header("UI")]
-    [SerializeField] private Button backButton;
-
-    [Header("Scene")]
-    [Tooltip("Exact name of your Start Menu scene as in Build Settings")]
-    [SerializeField] private string sceneName = "Start Menu";
+    public Button backButton;
+    public string sceneName = "Start Menu";
 
     private void OnEnable()
     {
@@ -25,11 +21,6 @@ public class BackMenu : MonoBehaviour
 
     private void LoadStartMenu()
     {
-        if (string.IsNullOrWhiteSpace(sceneName))
-        {
-            Debug.LogWarning("BackToStartMenu: sceneName is empty.");
-            return;
-        }
         SceneManager.LoadScene(sceneName);
     }
 }

@@ -6,17 +6,10 @@ public class CarEngine : MonoBehaviour
 {
     private enum CarType { None, McLaren, Dodge }
 
-    [Header("AR Placement Interactables")]
     [SerializeField] private ARPlacementInteractable mclarenPlacer;
     [SerializeField] private ARPlacementInteractable dodgePlacer;
-
-    [Header("Engine AudioSources")]
-    [Tooltip("AudioSource configured with the McLaren start sound")]
     [SerializeField] private AudioSource mclarenAudioSource;
-    [Tooltip("AudioSource configured with the Dodge start sound")]
     [SerializeField] private AudioSource dodgeAudioSource;
-
-    [Header("UI Toggle Button")]
     [SerializeField] private Button engineToggleButton;
 
     private CarType currentType = CarType.None;
@@ -57,10 +50,6 @@ public class CarEngine : MonoBehaviour
                     dodgeAudioSource.Stop();
                 else
                     dodgeAudioSource.Play();
-                break;
-
-            default:
-                Debug.LogWarning("No car has been spawned yet.");
                 break;
         }
     }

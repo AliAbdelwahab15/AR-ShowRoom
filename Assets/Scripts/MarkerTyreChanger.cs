@@ -4,30 +4,23 @@ using UnityEngine.UI;
 
 public class MarkerTyreChanger : MonoBehaviour
 {
-    private enum CarType { None, McLaren, Dodge }
-    private enum ColorChoice { Red, Yellow, Blue, Black }
-
-    [Header("UI Buttons")]
-    [SerializeField] private Button redButton;
-    [SerializeField] private Button yellowButton;
-    [SerializeField] private Button blueButton;
-    [SerializeField] private Button blackButton;
-
-    [Header("McLaren Tyre Materials")]
-    [SerializeField] private Material mclarenOriginalTyreMaterial;
-    [SerializeField] private Material mclarenRedTyreMaterial;
-    [SerializeField] private Material mclarenYellowTyreMaterial;
-    [SerializeField] private Material mclarenBlueTyreMaterial;
-    [SerializeField] private Material mclarenBlackTyreMaterial;
-
-    [Header("Dodge Tyre Material")]
-    [SerializeField] private Material dodgeOriginalTyreMaterial;
-
-    private GameObject currentCar;
+    public enum CarType { None, McLaren, Dodge }
+    public enum ColorChoice { Red, Yellow, Blue, Black }
+    public Button redButton;
+    public Button yellowButton;
+    public Button blueButton;
+    public Button blackButton;
+    public Material mclarenOriginalTyreMaterial;
+    public Material mclarenRedTyreMaterial;
+    public Material mclarenYellowTyreMaterial;
+    public Material mclarenBlueTyreMaterial;
+    public Material mclarenBlackTyreMaterial;
+    public Material dodgeOriginalTyreMaterial;
+    public GameObject currentCar;
     private CarType currentType = CarType.None;
-    private Material currentOriginalTyres;
-    private Dictionary<Renderer, int[]> tyreSlots = new Dictionary<Renderer, int[]>();
-    private bool nextTyreColorArmed = false;
+    public Material currentOriginalTyres;
+    public Dictionary<Renderer, int[]> tyreSlots = new Dictionary<Renderer, int[]>();
+    public bool nextTyreColorArmed = false;
     private ColorChoice nextTyreChoice = ColorChoice.Red;
 
     private void OnEnable()

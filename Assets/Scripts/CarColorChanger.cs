@@ -19,10 +19,10 @@ public class CarColorChanger : MonoBehaviour
 
     // state
     private Mode currentMode = Mode.Paint;
-    private GameObject currentCar;
-    private Material paintOriginal, tyreOriginal;
-    private Dictionary<Renderer, int[]> paintSlots = new Dictionary<Renderer, int[]>();
-    private Dictionary<Renderer, int[]> tyreSlots = new Dictionary<Renderer, int[]>();
+    public GameObject currentCar;
+    public Material paintOriginal, tyreOriginal;
+    public Dictionary<Renderer, int[]> paintSlots = new Dictionary<Renderer, int[]>();
+    public Dictionary<Renderer, int[]> tyreSlots = new Dictionary<Renderer, int[]>();
 
     private void OnEnable()
     {

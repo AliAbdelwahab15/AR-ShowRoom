@@ -4,21 +4,12 @@ using UnityEngine.XR.Interaction.Toolkit.AR;
 
 public class McLarenColor : MonoBehaviour
 {
-    [Header("AR Placement")]
-    [SerializeField] private ARPlacementInteractable placementInteractable;
-
-    [Header("UI")]
-    [SerializeField] private Button changeNextButton;
-
-    [Header("Materials")]
-    [Tooltip("Drag in the original 'Body1' material asset here")]
-    [SerializeField] private Material originalMaterial;
-
-    [Tooltip("Drag in the replacement 'Body 1 2' material asset here")]
-    [SerializeField] private Material replacementMaterial;
-
+    public ARPlacementInteractable placementInteractable;
+    public Button changeNextButton;
+    public Material originalMaterial;
+    public Material replacementMaterial;
     // when true, the next spawned prefab will have its body swapped
-    private bool swapNext = false;
+    public bool swapNext = false;
 
     private void OnEnable()
     {

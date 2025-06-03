@@ -4,13 +4,12 @@ using UnityEngine.XR.Interaction.Toolkit.AR;
 
 public class CarRotator : MonoBehaviour
 {
-    [SerializeField] private ARPlacementInteractable mclarenPlacer;
-    [SerializeField] private ARPlacementInteractable dodgePlacer;
-    [SerializeField] private Button rotateToggleButton;
-    [SerializeField] private float rotationSpeed = 30f;
-
-    private GameObject currentCar;
-    private bool isRotating = false;
+    public ARPlacementInteractable mclarenPlacer;
+    public ARPlacementInteractable dodgePlacer;
+    public Button rotateToggleButton;
+    public float rotationSpeed = 30f;
+    public GameObject currentCar;
+    public bool isRotating = false;
 
     private void OnEnable()
     {

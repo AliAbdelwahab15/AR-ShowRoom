@@ -5,16 +5,9 @@ using UnityEngine.UI;
 public class MarkerCarEngine : MonoBehaviour
 {
     private enum CarType { None, McLaren, Dodge }
-
-    [Header("Engine AudioSources")]
-    [Tooltip("AudioSource with the McLaren start sound")]
-    [SerializeField] private AudioSource mclarenAudioSource;
-    [Tooltip("AudioSource with the Dodge start sound")]
-    [SerializeField] private AudioSource dodgeAudioSource;
-
-    [Header("UI Toggle Button")]
-    [SerializeField] private Button engineToggleButton;
-
+    public AudioSource mclarenAudioSource;
+    public AudioSource dodgeAudioSource;
+    public Button engineToggleButton;
     private CarType currentType = CarType.None;
 
     private void OnEnable()

@@ -4,27 +4,20 @@ using UnityEngine.UI;
 
 public class MarkerColorChanger : MonoBehaviour
 {
-    private enum Mode { Paint, Tyres }
-
-    [Header("Original Paint Materials")]
-    [SerializeField] private Material mclarenOriginalPaint;
-    [SerializeField] private Material dodgeOriginalPaint;
-
-    [Header("Original Tyre Materials")]
-    [SerializeField] private Material mclarenOriginalTyre;
-    [SerializeField] private Material dodgeOriginalTyre;
-
-    [Header("UI")]
-    [SerializeField] private Button paintModeButton;
-    [SerializeField] private Button tyreModeButton;
-    [SerializeField] private ColorWheel colorWheel;
-
+    public enum Mode { Paint, Tyres }
+    public Material mclarenOriginalPaint;
+    public Material dodgeOriginalPaint;
+    public Material mclarenOriginalTyre;
+    public Material dodgeOriginalTyre;
+    public Button paintModeButton;
+    public Button tyreModeButton;
+    public ColorWheel colorWheel;
     private Mode currentMode = Mode.Paint;
-    private GameObject currentCar;
-    private Material paintOriginal;
-    private Material tyreOriginal;
-    private Dictionary<Renderer, int[]> paintSlots = new Dictionary<Renderer, int[]>();
-    private Dictionary<Renderer, int[]> tyreSlots = new Dictionary<Renderer, int[]>();
+    public GameObject currentCar;
+    public Material paintOriginal;
+    public Material tyreOriginal;
+    public Dictionary<Renderer, int[]> paintSlots = new Dictionary<Renderer, int[]>();
+    public Dictionary<Renderer, int[]> tyreSlots = new Dictionary<Renderer, int[]>();
 
     private void OnEnable()
     {

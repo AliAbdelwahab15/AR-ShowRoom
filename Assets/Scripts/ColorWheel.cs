@@ -7,13 +7,10 @@ public class ColorEvent : UnityEvent<Color> { }
 
 public class ColorWheel : MonoBehaviour
 {
-    [Header("UI Elements")]
     public Slider redSlider;
     public Slider greenSlider;
     public Slider blueSlider;
     public Image previewImage;
-
-    [Header("Event")]
     public ColorEvent onColorChanged;
 
     private void Start()

@@ -5,37 +5,27 @@ using UnityEngine.XR.Interaction.Toolkit.AR;
 
 public class TyresColor : MonoBehaviour
 {
-    private enum CarType { None, McLaren, Dodge }
-    private enum ColorChoice { Red, Blue, Yellow, Black }
-
-    [Header("AR Placers")]
-    [SerializeField] private ARPlacementInteractable mclarenPlacer;
-    [SerializeField] private ARPlacementInteractable dodgePlacer;
-
-    [Header("McLaren Tyre Materials")]
-    [SerializeField] private Material mclarenOriginalTyreMaterial;
-    [SerializeField] private Material mclarenRedTyreMaterial;
-    [SerializeField] private Material mclarenBlueTyreMaterial;
-    [SerializeField] private Material mclarenYellowTyreMaterial;
-    [SerializeField] private Material mclarenBlackTyreMaterial;
-
-    [Header("Dodge Tyre Material")]
-    [SerializeField] private Material dodgeOriginalTyreMaterial;
-
-    [Header("UI Buttons")]
-    [SerializeField] private Button redButton;
-    [SerializeField] private Button blueButton;
-    [SerializeField] private Button yellowButton;
-    [SerializeField] private Button blackButton;
-
+    public enum CarType { None, McLaren, Dodge }
+    public enum ColorChoice { Red, Blue, Yellow, Black }
+    public ARPlacementInteractable mclarenPlacer;
+    public ARPlacementInteractable dodgePlacer;
+    public Material mclarenOriginalTyreMaterial;
+    public Material mclarenRedTyreMaterial;
+    public Material mclarenBlueTyreMaterial;
+    public Material mclarenYellowTyreMaterial;
+    public Material mclarenBlackTyreMaterial;
+    public Material dodgeOriginalTyreMaterial;
+    public Button redButton;
+    public Button blueButton;
+    public Button yellowButton;
+    public Button blackButton;
     // runtime state
-    private GameObject currentCar;
-    private CarType currentType = CarType.None;
-    private Material currentOriginalTyreMaterial;
-    private Dictionary<Renderer, int[]> tyreSlots = new Dictionary<Renderer, int[]>();
-
+    public GameObject currentCar;
+    public CarType currentType = CarType.None;
+    public Material currentOriginalTyreMaterial;
+    public Dictionary<Renderer, int[]> tyreSlots = new Dictionary<Renderer, int[]>();
     // next-spawn color
-    private bool nextColorArmed = false;
+    public bool nextColorArmed = false;
     private ColorChoice nextChoice = ColorChoice.Red;
 
     private void OnEnable()

@@ -4,15 +4,13 @@ using UnityEngine.XR.Interaction.Toolkit.AR;
 
 public class CarEngine : MonoBehaviour
 {
-    private enum CarType { None, McLaren, Dodge }
-
-    [SerializeField] private ARPlacementInteractable mclarenPlacer;
-    [SerializeField] private ARPlacementInteractable dodgePlacer;
-    [SerializeField] private AudioSource mclarenAudioSource;
-    [SerializeField] private AudioSource dodgeAudioSource;
-    [SerializeField] private Button engineToggleButton;
-
-    private CarType currentType = CarType.None;
+    public enum CarType { None, McLaren, Dodge }
+    public ARPlacementInteractable mclarenPlacer;
+    public ARPlacementInteractable dodgePlacer;
+    public AudioSource mclarenAudioSource;
+    public AudioSource dodgeAudioSource;
+    public Button engineToggleButton;
+    public CarType currentType = CarType.None;
 
     private void OnEnable()
     {
@@ -33,9 +31,7 @@ public class CarEngine : MonoBehaviour
         switch (currentType)
         {
             case CarType.McLaren:
-                // Stop the other audio
                 dodgeAudioSource.Stop();
-                // Toggle McLaren audio
                 if (mclarenAudioSource.isPlaying)
                     mclarenAudioSource.Stop();
                 else
@@ -43,9 +39,7 @@ public class CarEngine : MonoBehaviour
                 break;
 
             case CarType.Dodge:
-                // Stop the other audio
                 mclarenAudioSource.Stop();
-                // Toggle Dodge audio
                 if (dodgeAudioSource.isPlaying)
                     dodgeAudioSource.Stop();
                 else

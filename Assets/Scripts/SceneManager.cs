@@ -4,15 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransfer : MonoBehaviour
 {
-    [Header("UI Buttons")]
-    [SerializeField] private Button markerBasedButton;
-    [SerializeField] private Button markerlessButton;
-
-    [Header("Scene Names")]
-    [Tooltip("Exact name of your marker-based scene in Build Settings")]
-    [SerializeField] private string markerBasedSceneName;
-    [Tooltip("Exact name of your marker-less scene in Build Settings")]
-    [SerializeField] private string markerlessSceneName;
+    public Button markerBasedButton;
+    public Button markerlessButton;
+    public string markerBasedSceneName;
+    public string markerlessSceneName;
 
     private void OnEnable()
     {
@@ -32,21 +27,11 @@ public class SceneTransfer : MonoBehaviour
 
     private void LoadMarkerBasedScene()
     {
-        if (string.IsNullOrEmpty(markerBasedSceneName))
-        {
-            Debug.LogWarning("SceneSwitcher: marker-based scene name not set.");
-            return;
-        }
         SceneManager.LoadScene(markerBasedSceneName);
     }
 
     private void LoadMarkerlessScene()
     {
-        if (string.IsNullOrEmpty(markerlessSceneName))
-        {
-            Debug.LogWarning("SceneSwitcher: marker-less scene name not set.");
-            return;
-        }
         SceneManager.LoadScene(markerlessSceneName);
     }
 }

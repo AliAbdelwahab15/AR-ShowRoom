@@ -7,20 +7,13 @@ using UnityEngine.XR.ARSubsystems;
 [RequireComponent(typeof(ARTrackedImageManager))]
 public class MarkerSpawner : MonoBehaviour
 {
-    [Header("AR Tracked Image Manager")]
-    [SerializeField] private ARTrackedImageManager trackedImageManager;
-
-    [Header("Prefabs")]
-    [Tooltip("Prefab to spawn when the ‘McLaren’ marker is detected")]
-    [SerializeField] private GameObject mclarenPrefab;
-    [Tooltip("Prefab to spawn when the ‘Dodge’ marker is detected")]
-    [SerializeField] private GameObject dodgePrefab;
-
+    public ARTrackedImageManager trackedImageManager;
+    public GameObject mclarenPrefab;
+    public GameObject dodgePrefab;
     // Fires whenever we instantiate a new car from a marker
     public static event Action<GameObject> OnMarkerPlaced;
-
     // Keep track of spawned instances by marker name
-    private readonly Dictionary<string, GameObject> _spawned = new Dictionary<string, GameObject>();
+    public readonly Dictionary<string, GameObject> _spawned = new Dictionary<string, GameObject>();
 
     private void OnEnable()
     {

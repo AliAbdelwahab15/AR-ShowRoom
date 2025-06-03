@@ -3,11 +3,9 @@ using UnityEngine.UI;
 
 public class RearLeftDoor : MonoBehaviour
 {
-    [Header("UI Toggle Button")]
-    [SerializeField] private Button toggleButton;
-
-    private Animator doorAnimator;
-    private bool isOpen;
+    public Button toggleButton;
+    public Animator doorAnimator;
+    public bool isOpen;
 
     private void Awake()
     {

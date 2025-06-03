@@ -6,12 +6,8 @@ using UnityEngine.XR.ARSubsystems;
 [RequireComponent(typeof(ARTrackedImageManager))]
 public class ImageTracker : MonoBehaviour
 {
-    [Header("Tracked-Image Prefabs")]
-    [Tooltip("Prefab to spawn when the ‘McLaren’ image is detected")]
     public GameObject mclarenPrefab;
-    [Tooltip("Prefab to spawn when the ‘Dodge’ image is detected")]
     public GameObject dodgePrefab;
-
     private ARTrackedImageManager _imageManager;
     private Dictionary<string, GameObject> _spawned = new Dictionary<string, GameObject>();
 

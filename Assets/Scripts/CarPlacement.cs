@@ -4,10 +4,10 @@ using UnityEngine.XR.Interaction.Toolkit.AR;
 
 public class CarPlacement : MonoBehaviour
 {
-    [SerializeField] private ARPlacementInteractable mclarenPlacement;
-    [SerializeField] private ARPlacementInteractable dodgePlacement;
-    [SerializeField] private Button mclarenButton;
-    [SerializeField] private Button dodgeButton;
+    public ARPlacementInteractable mclarenPlacement;
+    public ARPlacementInteractable dodgePlacement;
+    public Button mclarenButton;
+    public Button dodgeButton;
 
     private void Awake()
     {
@@ -18,7 +18,6 @@ public class CarPlacement : MonoBehaviour
 
     private void OnDestroy()
     {
-        // clean up listeners
         mclarenButton.onClick.RemoveListener(ActivateMcLaren);
         dodgeButton.onClick.RemoveListener(ActivateDodge);
     }

@@ -3,15 +3,10 @@ using UnityEngine.UI;
 
 public class MarkerCarRotator : MonoBehaviour
 {
-    private GameObject currentCar;
-    private bool isRotating = false;
-
-    [Header("UI Toggle Button")]
-    [SerializeField] private Button rotateToggleButton;
-
-    [Header("Rotation Settings")]
-    [Tooltip("Degrees per second")]
-    [SerializeField] private float rotationSpeed = 30.0f;
+    public GameObject currentCar;
+    public bool isRotating = false;
+    public Button rotateToggleButton;
+    public float rotationSpeed = 30.0f;
 
     void OnEnable()
     {

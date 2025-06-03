@@ -4,9 +4,8 @@ using UnityEngine.UI;
 public class RearRightDoor : MonoBehaviour
 {
     public Button toggleButton;
-
-    private Animator doorAnimator;
-    private bool isOpen;
+    public Animator doorAnimator;
+    public bool isOpen;
 
     private void Awake()
     {

@@ -4,20 +4,15 @@ using UnityEngine.XR.Interaction.Toolkit.AR;
 
 public class DodgeColor : MonoBehaviour
 {
-    [Header("AR Placement Interactable")]
-    [SerializeField] private ARPlacementInteractable placementInteractable;
+    public ARPlacementInteractable placementInteractable;
 
     [Header("UI Buttons")]
-    [SerializeField] private Button redButton;
-    [SerializeField] private Button yellowButton;
-    [SerializeField] private Button blueButton;
-
-    [Header("Original Paint Material (Body1)")]
-    [SerializeField] private Material originalPaintMaterial;
-
-    // The color chosen for the *next* spawn
-    private Color nextColor;
-    private bool hasNextColor = false;
+    public Button redButton;
+    public Button yellowButton;
+    public Button blueButton;
+    public Material originalPaintMaterial;
+    public Color nextColor;
+    public bool hasNextColor = false;
 
     private void OnEnable()
     {

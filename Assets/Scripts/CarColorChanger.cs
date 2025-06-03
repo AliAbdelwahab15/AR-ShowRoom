@@ -7,22 +7,15 @@ public class CarColorChanger : MonoBehaviour
 {
     private enum Mode { Paint, Tyres }
 
-    [Header("AR Placement")]
-    [SerializeField] private ARPlacementInteractable mclarenPlacer;
-    [SerializeField] private ARPlacementInteractable dodgePlacer;
-
-    [Header("Original Paint Materials")]
-    [SerializeField] private Material mclarenOriginalPaint;
-    [SerializeField] private Material dodgeOriginalPaint;
-
-    [Header("Original Tyre Materials")]
-    [SerializeField] private Material mclarenOriginalTyre;
-    [SerializeField] private Material dodgeOriginalTyre;
-
-    [Header("UI")]
-    [SerializeField] private Button paintModeButton;
-    [SerializeField] private Button tyreModeButton;
-    [SerializeField] private ColorWheel colorWheel; // your existing wheel
+    public ARPlacementInteractable mclarenPlacer;
+    public ARPlacementInteractable dodgePlacer;
+    public Material mclarenOriginalPaint;
+    public Material dodgeOriginalPaint;
+    public Material mclarenOriginalTyre;
+    public Material dodgeOriginalTyre;
+    public Button paintModeButton;
+    public Button tyreModeButton;
+    public ColorWheel colorWheel; // your existing wheel
 
     // state
     private Mode currentMode = Mode.Paint;

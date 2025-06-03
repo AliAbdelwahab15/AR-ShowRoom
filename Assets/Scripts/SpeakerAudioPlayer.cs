@@ -9,18 +9,22 @@ public class SpeakerAudioPlayer : MonoBehaviour
     private void OnEnable()
     {
         if (button != null)
-            button.onClick.AddListener(PlayAudio);
+            button.onClick.AddListener(OnButtonPressed);
     }
 
     private void OnDisable()
     {
         if (button != null)
-            button.onClick.RemoveListener(PlayAudio);
+            button.onClick.RemoveListener(OnButtonPressed);
     }
 
-    private void PlayAudio()
+    private void OnButtonPressed()
     {
-        if (audioSource != null)
+        if (audioSource == null) return;
+
+        if (audioSource.isPlaying)
+            audioSource.Stop();
+        else
             audioSource.Play();
     }
 }

@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class RearRightDoor : MonoBehaviour
 {
-    [Header("UI Toggle Button")]
-    [SerializeField] private Button toggleButton;
+    public Button toggleButton;
 
     private Animator doorAnimator;
     private bool isOpen;

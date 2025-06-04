@@ -21,14 +21,9 @@ public class MarkerColorChanger : MonoBehaviour
 
     private void OnEnable()
     {
-        // Subscribe to marker-based spawns
         MarkerSpawner.OnMarkerPlaced += OnMarkerPlaced;
-
-        // Mode buttons
         paintModeButton.onClick.AddListener(() => currentMode = Mode.Paint);
         tyreModeButton.onClick.AddListener(() => currentMode = Mode.Tyres);
-
-        // Color wheel
         colorWheel.onColorChanged.AddListener(ApplyColor);
     }
 

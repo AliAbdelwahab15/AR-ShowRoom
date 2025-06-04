@@ -15,7 +15,6 @@ public class ColorWheel : MonoBehaviour
 
     private void Start()
     {
-        // hook all three sliders to our callback
         redSlider.onValueChanged.AddListener(_ => UpdateColor());
         greenSlider.onValueChanged.AddListener(_ => UpdateColor());
         blueSlider.onValueChanged.AddListener(_ => UpdateColor());

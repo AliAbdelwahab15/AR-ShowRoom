@@ -12,7 +12,6 @@ public class MarkerCarEngine : MonoBehaviour
 
     private void OnEnable()
     {
-        // Subscribe when a marker spawns a car
         MarkerSpawner.OnMarkerPlaced += OnMarkerPlaced;
         engineToggleButton.onClick.AddListener(ToggleEngineSound);
     }
@@ -25,7 +24,7 @@ public class MarkerCarEngine : MonoBehaviour
 
     private void OnMarkerPlaced(GameObject car)
     {
-        string n = car.name;  // e.g. "McLaren(Clone)" or "Dodge(Clone)"
+        string n = car.name;
         if (n.Contains("McLaren"))
         {
             currentType = CarType.McLaren;

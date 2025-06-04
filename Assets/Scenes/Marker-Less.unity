@@ -455,7 +455,7 @@ GameObject:
   - component: {fileID: 186136828}
   - component: {fileID: 186136827}
   m_Layer: 0
-  m_Name: Placement Selection
+  m_Name: Car Placement Selection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -830,6 +830,7 @@ MonoBehaviour:
   mclarenAudioSource: {fileID: 664720362}
   dodgeAudioSource: {fileID: 132518832}
   engineToggleButton: {fileID: 748484194}
+  currentType: 0
 --- !u!4 &273189328
 Transform:
   m_ObjectHideFlags: 0
@@ -1009,6 +1010,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FPSText: {fileID: 807884629}
+  deltaTime: 0
 --- !u!4 &364572377
 Transform:
   m_ObjectHideFlags: 0
@@ -4849,6 +4851,8 @@ MonoBehaviour:
   dodgePlacer: {fileID: 1157568809}
   rotateToggleButton: {fileID: 1127040990}
   rotationSpeed: 20
+  currentCar: {fileID: 0}
+  isRotating: 0
 --- !u!4 &1474441095
 Transform:
   m_ObjectHideFlags: 0
@@ -5096,9 +5100,12 @@ MonoBehaviour:
   dodgeOriginalPaint: {fileID: 2100000, guid: f34eb1aaa5df1ce4888bd0841ed78da3, type: 2}
   mclarenOriginalTyre: {fileID: 2100000, guid: 7b1a17cded358cb4c90e6d5a55d2c1c2, type: 2}
   dodgeOriginalTyre: {fileID: 2100000, guid: 38d32a0e31738994aa2078887b2f8ce4, type: 2}
-  paintModeButton: {fileID: 1643841118}
-  tyreModeButton: {fileID: 1059774041}
+  CarBodyButton: {fileID: 1643841118}
+  tyresButton: {fileID: 1059774041}
   colorWheel: {fileID: 1804256597}
+  currentCar: {fileID: 0}
+  paintOriginal: {fileID: 0}
+  tyreOriginal: {fileID: 0}
 --- !u!4 &1626398697
 Transform:
   m_ObjectHideFlags: 0

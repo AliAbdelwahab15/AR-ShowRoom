@@ -10,9 +10,7 @@ public class MarkerSpawner : MonoBehaviour
     public ARTrackedImageManager trackedImageManager;
     public GameObject mclarenPrefab;
     public GameObject dodgePrefab;
-    // Fires whenever we instantiate a new car from a marker
     public static event Action<GameObject> OnMarkerPlaced;
-    // Keep track of spawned instances by marker name
     public readonly Dictionary<string, GameObject> _spawned = new Dictionary<string, GameObject>();
 
     private void OnEnable()
@@ -27,11 +25,9 @@ public class MarkerSpawner : MonoBehaviour
 
     private void OnImagesChanged(ARTrackedImagesChangedEventArgs args)
     {
-        // 1) Added: spawn new cars
         foreach (var tracked in args.added)
             SpawnCarFor(tracked);
 
-        // 2) Updated: move or hide existing cars
         foreach (var tracked in args.updated)
         {
             if (_spawned.TryGetValue(tracked.referenceImage.name, out var go))
@@ -47,7 +43,6 @@ public class MarkerSpawner : MonoBehaviour
             }
         }
 
-        // 3) Removed: destroy lost cars
         foreach (var tracked in args.removed)
         {
             if (_spawned.TryGetValue(tracked.referenceImage.name, out var go))
@@ -82,8 +77,6 @@ public class MarkerSpawner : MonoBehaviour
 
         instance.name = tracked.referenceImage.name;
         _spawned[tracked.referenceImage.name] = instance;
-
-        // Notify any color-changer or other system that a new car appeared
         OnMarkerPlaced?.Invoke(instance);
     }
 }

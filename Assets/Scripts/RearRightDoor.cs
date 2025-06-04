@@ -9,26 +9,21 @@ public class RearRightDoor : MonoBehaviour
 
     private void Awake()
     {
-        // Search from the prefab root for the RearRightPivot
         Transform root = transform.root;
         Transform pivot = FindDeep(root, "RearRightPivot");
         if (pivot == null)
         {
-            //Debug.LogWarning("RearRightPivot not found under prefab.");
             enabled = false;
             return;
         }
 
-        // Grab its Animator and make sure it has a controller
         doorAnimator = pivot.GetComponent<Animator>();
         if (doorAnimator == null || doorAnimator.runtimeAnimatorController == null)
         {
-            //Debug.LogWarning("Animator or Controller missing on RearRightPivot.");
             enabled = false;
             return;
         }
 
-        // Reset both triggers and start closed
         doorAnimator.ResetTrigger("OpenDoors");
         doorAnimator.ResetTrigger("CloseDoors");
         doorAnimator.SetTrigger("CloseDoors");
@@ -65,7 +60,6 @@ public class RearRightDoor : MonoBehaviour
         isOpen = !isOpen;
     }
 
-    // Depth-first recursive search for a child by exact name
     private Transform FindDeep(Transform parent, string name)
     {
         if (parent.name == name)

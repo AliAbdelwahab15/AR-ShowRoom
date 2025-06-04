@@ -13,9 +13,9 @@ public class CarColorChanger : MonoBehaviour
     public Material dodgeOriginalPaint;
     public Material mclarenOriginalTyre;
     public Material dodgeOriginalTyre;
-    public Button paintModeButton;
-    public Button tyreModeButton;
-    public ColorWheel colorWheel; // your existing wheel
+    public Button CarBodyButton;
+    public Button tyresButton;
+    public ColorWheel colorWheel;
 
     // state
     private Mode currentMode = Mode.Paint;
@@ -29,8 +29,8 @@ public class CarColorChanger : MonoBehaviour
         mclarenPlacer.objectPlaced.AddListener(args => CacheNewCar(args.placementObject, true));
         dodgePlacer.objectPlaced.AddListener(args => CacheNewCar(args.placementObject, false));
 
-        paintModeButton.onClick.AddListener(() => currentMode = Mode.Paint);
-        tyreModeButton.onClick.AddListener(() => currentMode = Mode.Tyres);
+        CarBodyButton.onClick.AddListener(() => currentMode = Mode.Paint);
+        tyresButton.onClick.AddListener(() => currentMode = Mode.Tyres);
 
         colorWheel.onColorChanged.AddListener(ApplyColor);
     }
@@ -40,8 +40,8 @@ public class CarColorChanger : MonoBehaviour
         mclarenPlacer.objectPlaced.RemoveAllListeners();
         dodgePlacer.objectPlaced.RemoveAllListeners();
 
-        paintModeButton.onClick.RemoveAllListeners();
-        tyreModeButton.onClick.RemoveAllListeners();
+        CarBodyButton.onClick.RemoveAllListeners();
+        tyresButton.onClick.RemoveAllListeners();
 
         colorWheel.onColorChanged.RemoveAllListeners();
     }
@@ -88,7 +88,7 @@ public class CarColorChanger : MonoBehaviour
         foreach (var kv in target)
         {
             var rend = kv.Key;
-            var mats = rend.materials; // get modifiable copy
+            var mats = rend.materials;
 
             foreach (int idx in kv.Value)
             {
@@ -98,7 +98,7 @@ public class CarColorChanger : MonoBehaviour
                     mats[idx].SetColor("_Color", c);
             }
 
-            rend.materials = mats; // write back
+            rend.materials = mats;
         }
     }
 }

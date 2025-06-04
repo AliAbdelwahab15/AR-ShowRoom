@@ -13,10 +13,8 @@ public class CarRotator : MonoBehaviour
 
     private void OnEnable()
     {
-        // Bind the placement event directly to our handler with ARObjectPlacementEventArgs
         mclarenPlacer.objectPlaced.AddListener(OnCarPlaced);
         dodgePlacer.objectPlaced.AddListener(OnCarPlaced);
-
         rotateToggleButton.onClick.AddListener(ToggleRotation);
     }
 
@@ -24,26 +22,17 @@ public class CarRotator : MonoBehaviour
     {
         mclarenPlacer.objectPlaced.RemoveListener(OnCarPlaced);
         dodgePlacer.objectPlaced.RemoveListener(OnCarPlaced);
-
         rotateToggleButton.onClick.RemoveListener(ToggleRotation);
     }
 
-    // Called whenever either placer spawns its prefab
     private void OnCarPlaced(ARObjectPlacementEventArgs args)
     {
         currentCar = args.placementObject;
-        isRotating = false; // reset rotation state on new spawn
+        isRotating = false;
     }
 
-    // Toggles rotation of the currentCar
     private void ToggleRotation()
     {
-        if (currentCar == null)
-        {
-            Debug.LogWarning("No car has been spawned yet.");
-            return;
-        }
-
         isRotating = !isRotating;
     }
 
@@ -51,7 +40,6 @@ public class CarRotator : MonoBehaviour
     {
         if (isRotating && currentCar != null)
         {
-            // Rotate around world Y axis
             currentCar.transform.Rotate(0f, rotationSpeed * Time.deltaTime, 0f, Space.World);
         }
     }

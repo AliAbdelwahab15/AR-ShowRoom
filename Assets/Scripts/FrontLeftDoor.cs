@@ -9,26 +9,19 @@ public class FrontLeftDoor : MonoBehaviour
 
     private void Awake()
     {
-        // find the pivot under this prefab instance
         Transform root = transform.root;
         Transform pivot = FindDeep(root, "FrontLeftPivot");
         if (pivot == null)
         {
-            //Debug.LogWarning("FrontLeftPivot not found under prefab.");
             enabled = false;
             return;
         }
-
-        // grab its Animator and verify it has a controller
         doorAnimator = pivot.GetComponent<Animator>();
         if (doorAnimator == null || doorAnimator.runtimeAnimatorController == null)
         {
-            //Debug.LogWarning("Animator or Controller missing on FrontLeftPivot.");
             enabled = false;
             return;
         }
-
-        // ensure the door starts closed
         doorAnimator.ResetTrigger("OpenDoors");
         doorAnimator.ResetTrigger("CloseDoors");
         doorAnimator.SetTrigger("CloseDoors");
@@ -65,7 +58,6 @@ public class FrontLeftDoor : MonoBehaviour
         isOpen = !isOpen;
     }
 
-    // depth-first search for a child by exact name
     private Transform FindDeep(Transform parent, string name)
     {
         if (parent.name == name)
